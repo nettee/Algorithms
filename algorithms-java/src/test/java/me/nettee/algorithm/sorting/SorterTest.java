@@ -1,18 +1,35 @@
 package me.nettee.algorithm.sorting;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Random;
 import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertTrue;
 
+@RunWith(Parameterized.class)
 public class SorterTest {
+
+    @Parameterized.Parameters(name = "{0}")
+    public static Collection<Object[]> data() {
+        return Arrays.asList(new Object[][] {
+                {new SelectionSorter()},
+                {new InsertionSorter()},
+                {new BubbleSorter()},
+        });
+    }
 
     private static final int N = 10;
 
-    private Sorter sorter = new SelectionSorter();
+    private Sorter sorter;
+
+    public SorterTest(Sorter sorter) {
+        this.sorter = sorter;
+    }
 
     @Test
     public void testSort() {

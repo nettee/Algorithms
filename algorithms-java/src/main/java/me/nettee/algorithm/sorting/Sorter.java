@@ -1,16 +1,21 @@
 package me.nettee.algorithm.sorting;
 
-public interface Sorter {
+public abstract class Sorter {
 
-    void sort(Comparable[] a);
+    abstract void sort(Comparable[] a);
 
-    default boolean less(Comparable v, Comparable w) {
+    boolean less(Comparable v, Comparable w) {
         return v.compareTo(w) < 0;
     }
 
-    default void exchange(Comparable[] a, int i, int j) {
+    void exchange(Comparable[] a, int i, int j) {
         Comparable t = a[i];
         a[i] = a[j];
         a[j] = t;
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName();
     }
 }

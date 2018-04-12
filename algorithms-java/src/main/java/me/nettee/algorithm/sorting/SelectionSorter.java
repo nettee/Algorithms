@@ -1,6 +1,6 @@
 package me.nettee.algorithm.sorting;
 
-public class SelectionSorter implements Sorter {
+public class SelectionSorter extends Sorter {
 
     @Override
     public void sort(Comparable[] a) {
