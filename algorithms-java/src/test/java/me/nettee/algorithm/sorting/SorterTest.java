@@ -20,6 +20,7 @@ public class SorterTest {
                 {new SelectionSorter()},
                 {new InsertionSorter()},
                 {new BubbleSorter()},
+                {new ShellSorter()},
         });
     }
 
