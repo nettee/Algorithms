@@ -21,6 +21,9 @@ public class SorterTest {
                 {new InsertionSorter()},
                 {new BubbleSorter()},
                 {new ShellSorter()},
+//                {new Mergesorter()},
+//                {new Quicksorter()},
+//                {new Heapsorter()},
         });
     }
 
