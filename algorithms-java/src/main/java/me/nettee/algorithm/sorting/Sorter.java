@@ -1,7 +1,5 @@
 package me.nettee.algorithm.sorting;
 
-import com.google.common.base.Preconditions;
-
 public abstract class Sorter {
 
     abstract void sort(Comparable[] a);

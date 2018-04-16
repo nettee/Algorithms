@@ -22,7 +22,7 @@ public class SorterTest {
                 {new BubbleSorter()},
                 {new ShellSorter()},
                 {new MergeSorter()},
-//                {new Quicksorter()},
+                {new QuickSorter()},
 //                {new Heapsorter()},
         });
     }
