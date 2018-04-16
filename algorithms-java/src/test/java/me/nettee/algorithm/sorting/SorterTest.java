@@ -23,7 +23,7 @@ public class SorterTest {
                 {new ShellSorter()},
                 {new MergeSorter()},
                 {new QuickSorter()},
-//                {new Heapsorter()},
+                {new HeapSorter()},
         });
     }
 

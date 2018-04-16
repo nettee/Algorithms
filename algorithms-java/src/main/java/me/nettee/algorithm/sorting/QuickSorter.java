@@ -32,10 +32,10 @@ public class QuickSorter extends Sorter {
         int j = high - 1;
         while (true) {
             // Find a pair of (i, j) such that a[i] > pivot > a[j]
-            while (less(a[i], pivot)) {
+            while (i <= high && less(a[i], pivot)) {
                 i++;
             }
-            while (less(pivot, a[j])) {
+            while (j >= low && less(pivot, a[j])) {
                 j--;
             }
             if (i >= j) {
