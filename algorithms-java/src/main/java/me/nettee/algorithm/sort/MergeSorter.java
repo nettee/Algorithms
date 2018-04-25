@@ -1,4 +1,4 @@
-package me.nettee.algorithm.sorting;
+package me.nettee.algorithm.sort;
 
 import com.google.common.base.Preconditions;
 

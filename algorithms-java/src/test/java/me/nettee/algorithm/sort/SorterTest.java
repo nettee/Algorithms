@@ -1,4 +1,4 @@
-package me.nettee.algorithm.sorting;
+package me.nettee.algorithm.sort;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.Random;
 import java.util.stream.Collectors;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(Parameterized.class)
@@ -42,10 +43,13 @@ public class SorterTest {
         for (int i = 0; i < N; i++) {
             a[i] = random.nextInt(100);
         }
-        show(a);
+
+        Integer[] expected = Arrays.copyOf(a, a.length);
+        Arrays.sort(expected);
+
         sorter.sort(a);
         assertTrue(isSorted(a));
-        show(a);
+        assertArrayEquals(expected, a);
     }
 
     private void show(Comparable[] a) {
