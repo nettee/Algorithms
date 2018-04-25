@@ -9,7 +9,7 @@ public class SimpleBSTTest {
 
     private static final int N = 10;
 
-    private SimpleBST simpleBST = new SimpleBST();
+    private SimpleBST<Integer, Integer> simpleBST = new SimpleBST<>();
 
     @Test
     public void testBST() {
@@ -18,7 +18,7 @@ public class SimpleBSTTest {
         for (int i = 0; i < N; i++) {
             int k = random.nextInt();
             int v = random.nextInt();
-            System.out.printf("put <%d, %d>\n", k, v);
+//            System.out.printf("put <%d, %d>\n", k, v);
             items.put(k, v);
             simpleBST.put(k, v);
         }

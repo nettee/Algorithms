@@ -70,9 +70,9 @@ public class SimpleBST<Key extends Comparable<Key>, Value> {
 
         int c = key.compareTo(node.key);
         if (c < 0) {
-            put(node.left, key, value);
+            node.left = put(node.left, key, value);
         } else if (c > 0) {
-            put(node.right, key, value);
+            node.right = put(node.right, key, value);
         } else {
             // Base case: modify value
             node.value = value;
