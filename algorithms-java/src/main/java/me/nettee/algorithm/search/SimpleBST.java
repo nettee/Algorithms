@@ -7,12 +7,14 @@ public class SimpleBST<Key extends Comparable<Key>, Value> {
     private class Node {
         Key key;
         Value value;
+        int N;
         Node left;
         Node right;
 
         public Node(Key key, Value value) {
             this.key = key;
             this.value = value;
+            N = 1;
         }
 
         @Override
@@ -39,7 +41,7 @@ public class SimpleBST<Key extends Comparable<Key>, Value> {
         if (node == null) {
             return 0;
         } else {
-            return size(node.left) + size(node.right) + 1;
+            return node.N;
         }
     }
 
@@ -92,6 +94,8 @@ public class SimpleBST<Key extends Comparable<Key>, Value> {
             // Base case: modify value
             node.value = value;
         }
+
+        node.N = size(node.left) + size(node.right) + 1;
 
         return node;
     }
