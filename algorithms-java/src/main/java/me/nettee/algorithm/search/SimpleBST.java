@@ -101,8 +101,71 @@ public class SimpleBST<Key extends Comparable<Key>, Value> {
     }
 
     public void delete(Key key) {
-        // TODO
-        throw new UnsupportedOperationException();
+        root = delete(root, key);
+    }
+
+    private Node delete(Node node, Key key) {
+        if (node == null) {
+            throw new IllegalStateException();
+        }
+
+        int cmp = key.compareTo(node.key);
+        if (cmp < 0) {
+            node.left = delete(node.left, key);
+        } else if (cmp > 0) {
+            node.right = delete(node.right, key);
+        } else {
+            // Delete this node.
+            // If this node has no more than one child, replace it with its child.
+            if (node.left == null) {
+                // FIXME update N
+                return node.right;
+            } else if (node.right == null) {
+                // FIXME update N
+                return node.left;
+            } else {
+                // This node has two children.
+                Node newNode = min(node.right);
+                // Note: deleteMin() must before newNode.left is set!
+                newNode.right = deleteMin(node.right);
+                newNode.left = node.left;
+                node = newNode;
+            }
+        }
+
+        node.N = size(node.left) + size(node.right) + 1;
+        return node;
+    }
+
+    private Node min(Node node) {
+        if (node.left == null) {
+            return node;
+        } else {
+            return min(node.left);
+        }
+    }
+
+    private Node deleteMin(Node node) {
+        if (node.left == null) {
+            // Base case: no left child
+            return node.right;
+        }
+
+        node.left = deleteMin(node.left);
+        node.N = size(node.left) + size(node.right) + 1;
+        return node;
+    }
+
+    String dumpTree() {
+        return dumpTree(root);
+    }
+
+    private String dumpTree(Node node) {
+        if (node == null) {
+            return "#";
+        } else {
+            return String.format("%d{%s,%s}", node.key, dumpTree(node.left), dumpTree(node.right));
+        }
     }
 
 }

@@ -20,7 +20,7 @@ public class SimpleBSTTest {
         Random random = new Random();
         for (int i = 0; i < N; i++) {
             int k = random.nextInt(100);
-            String v = RandomStringUtils.random(3);
+            String v = RandomStringUtils.randomAlphabetic(3);
             map.put(k, v);
         }
     }
@@ -29,13 +29,15 @@ public class SimpleBSTTest {
     public void testGet() {
         Set<Map.Entry<Integer, String>> entries = map.entrySet();
 
-        int s = 0;
-        for (Map.Entry<Integer, String> entry : entries) {
-            Integer key = entry.getKey();
-            String value = entry.getValue();
-            simpleBST.put(key, value);
-            s++;
-            Assert.assertEquals(s, simpleBST.size());
+        {
+            int s = 0;
+            for (Map.Entry<Integer, String> entry : entries) {
+                Integer key = entry.getKey();
+                String value = entry.getValue();
+                simpleBST.put(key, value);
+                s++;
+                Assert.assertEquals(s, simpleBST.size());
+            }
         }
 
         for (Map.Entry<Integer, String> entry : entries) {
@@ -47,16 +49,29 @@ public class SimpleBSTTest {
             Assert.assertEquals(expected, v);
         }
 
-        int k;
-        Random random = new Random();
-        while (true) {
-            k = random.nextInt(100);
-            if (!map.containsKey(k)) {
-                break;
+        {
+            int k;
+            Random random = new Random();
+            while (true) {
+                k = random.nextInt(100);
+                if (!map.containsKey(k)) {
+                    break;
+                }
             }
+
+            String v = simpleBST.get(k);
+            Assert.assertNull(v);
         }
 
-        String v = simpleBST.get(k);
-        Assert.assertNull(v);
+        {
+            int s = map.size();
+            for (Map.Entry<Integer, String> entry : entries) {
+                Integer key = entry.getKey();
+                simpleBST.delete(key);
+                s--;
+                Assert.assertEquals(s, simpleBST.size());
+                Assert.assertNull(String.format("get(%d) is not null", key), simpleBST.get(key));
+            }
+        }
     }
 }
