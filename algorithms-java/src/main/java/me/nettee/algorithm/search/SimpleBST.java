@@ -27,6 +27,22 @@ public class SimpleBST<Key extends Comparable<Key>, Value> {
         root = null;
     }
 
+    public boolean isEmpty() {
+        return size(root) > 0;
+    }
+
+    public int size() {
+        return size(root);
+    }
+
+    private int size(Node node) {
+        if (node == null) {
+            return 0;
+        } else {
+            return size(node.left) + size(node.right) + 1;
+        }
+    }
+
     public boolean contains(Key key) {
         return get(key) != null;
     }
@@ -55,8 +71,7 @@ public class SimpleBST<Key extends Comparable<Key>, Value> {
     public void put(Key key, Value value) {
         Preconditions.checkNotNull(key);
         if (value == null) {
-            // Delete the key, value
-            // TODO
+            delete(key);
         } else {
             root = put(root, key, value);
         }
@@ -79,6 +94,11 @@ public class SimpleBST<Key extends Comparable<Key>, Value> {
         }
 
         return node;
+    }
+
+    public void delete(Key key) {
+        // TODO
+        throw new UnsupportedOperationException();
     }
 
 }
